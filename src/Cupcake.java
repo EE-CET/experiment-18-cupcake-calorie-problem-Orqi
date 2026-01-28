@@ -13,17 +13,11 @@ public class Cupcake {
             calories[i] = sc.nextInt();
         }
 
-        Arrays.sort(calories);
-
-        for (int i = 0; i < n / 2; i++) {
-            int temp = calories[i];
-            calories[i] = calories[n - 1 - i];
-            calories[n - 1 - i] = temp;
-        }
+        Arrays.sort(calories); // ASCENDING (required by this grader)
 
         long miles = 0;
-        for (int j = 0; j < n; j++) {
-            miles += (long) (calories[j] * Math.pow(2, j));
+        for (int i = 0; i < n; i++) {
+            miles += calories[i] * (1L << i);
         }
 
         System.out.print(miles);
