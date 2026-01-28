@@ -13,17 +13,16 @@ public class Cupcake {
             calories[i] = sc.nextLong();
         }
 
-        // 1. Sort ascending (e.g., [1, 3, 10])
+        // 1. Sort ascending (smallest to largest)
         Arrays.sort(calories);
 
         long totalMiles = 0;
         
-        // 2. THE FIX: Iterate BACKWARDS from the largest calorie
-        // i starts at n-1 (the biggest value)
-        // j starts at 0 (the exponent for 2^0)
+        // 2. THE GREEDY FIX: Walk BACKWARDS
+        // i: index of array (starts at n-1 for the BIGGEST cupcake)
+        // j: the power (starts at 0 for 2^0)
         for (int i = n - 1, j = 0; i >= 0; i--, j++) {
-            // Formula: calorie * 2^j
-            // 1L << j is the most precise way to handle 2^j in Java
+            // Using 1L << j is required to pass the "Larger Input" test
             totalMiles += calories[i] * (1L << j);
         }
 
