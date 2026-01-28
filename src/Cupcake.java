@@ -13,7 +13,15 @@ public class Cupcake {
             calories[i] = sc.nextInt();
         }
 
-        Arrays.sort(calories); // ASCENDING (required by this grader)
+        // Sort in ascending order
+        Arrays.sort(calories);
+
+        // Reverse to get descending order
+        for (int i = 0; i < n / 2; i++) {
+            int temp = calories[i];
+            calories[i] = calories[n - 1 - i];
+            calories[n - 1 - i] = temp;
+        }
 
         long miles = 0;
         for (int i = 0; i < n; i++) {
