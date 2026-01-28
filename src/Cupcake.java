@@ -5,7 +5,6 @@ public class Cupcake {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        // 1. Read input
         if (!sc.hasNextInt()) return;
         int n = sc.nextInt();
         long[] calories = new long[n];
@@ -14,22 +13,20 @@ public class Cupcake {
             calories[i] = sc.nextLong();
         }
 
-        // 2. Sort cupcakes (ascending: 1, 2, 3...)
+        // 1. Sort ascending (e.g., [1, 3, 10])
         Arrays.sort(calories);
 
         long totalMiles = 0;
         
-        // 3. THE GREEDY FIX:
-        // Walk BACKWARDS through the sorted array (biggest cupcakes first).
-        // i: index of the array (n-1 down to 0)
-        // j: the power of 2 (starts at 0)
+        // 2. THE FIX: Iterate BACKWARDS from the largest calorie
+        // i starts at n-1 (the biggest value)
+        // j starts at 0 (the exponent for 2^0)
         for (int i = n - 1, j = 0; i >= 0; i--, j++) {
-            // (1L << j) is 2^j. The 'L' is CRITICAL for large inputs.
-            // This pairs the largest calorie with 2^0, the next with 2^1, etc.
+            // Formula: calorie * 2^j
+            // 1L << j is the most precise way to handle 2^j in Java
             totalMiles += calories[i] * (1L << j);
         }
 
-        // 4. Print result
         System.out.println(totalMiles);
         sc.close();
     }
