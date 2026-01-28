@@ -13,16 +13,16 @@ public class Cupcake {
             calories[i] = sc.nextLong();
         }
 
-        // 1. Sort ascending (Java's default)
+        // 1. Sort ascending (e.g., [1, 3, 10])
         Arrays.sort(calories);
 
         long totalMiles = 0;
         
-        // 2. Iterate backwards to pick the largest calorie first
-        // i: index of the array (n-1 down to 0)
-        // j: the power of 2 (0 up to n-1)
+        // 2. Pair the largest calorie with the smallest power
+        // i tracks the array from end to start (largest to smallest)
+        // j tracks the power of 2 from 0 upwards
         for (int i = n - 1, j = 0; i >= 0; i--, j++) {
-            // totalMiles += calorie * 2^j
+            // miles += calorie * 2^j
             totalMiles += calories[i] * (1L << j);
         }
 
