@@ -15,7 +15,7 @@
       "setup": "javac src/Cupcake.java",
       "run": "java -cp src Cupcake",
       "input": "4\n5 10 20 40",
-      "output": "235",
+      "output": "160",
       "comparison": "included",
       "timeout": 10,
       "points": 25
@@ -35,7 +35,7 @@
       "setup": "javac src/Cupcake.java",
       "run": "java -cp src Cupcake",
       "input": "5\n7 4 9 6 2",
-      "output": "79",
+      "output": "111",
       "comparison": "included",
       "timeout": 10,
       "points": 25
